@@ -1,6 +1,6 @@
 # TodoApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
+A simple yet functional Todo App with search and filter capabilities. Users can add, modify, and delete todos to manage tasks efficiently Using Angular v20
 
 ## Preview
 ![Todo App Preview](public/image_2025-09-14_105333833.png)
