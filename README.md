@@ -3,7 +3,7 @@
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
 
 ## Preview
-![Todo App Preview](assets/image.png)
+![Todo App Preview](assets/image_2025-09-14_105333833.png)
 
 ## Development server
 
