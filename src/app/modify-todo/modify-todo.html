@@ -1,0 +1,35 @@
+<dialog id="modifyModal" class="w-full md:w-[60%] lg:w-[45%] xl:w-[30%] p-6 bg-white rounded-lg shadow-lg text-center relative">
+  <!-- Close button -->
+  <button
+    type="button"
+    class="absolute top-3 right-3 text-gray-500 cursor-pointer"
+    (click)="closeDialog()"
+  >
+    ✕
+  </button>
+
+  <h1 class="text-2xl font-bold mb-6 text-gray-800">Modify Todo</h1>
+
+  <form class="mb-4 text-left">
+    <label for="title" class="block text-gray-700 font-medium mb-2 text-lg">Title</label>
+    <input
+      type="text"
+      [ngModel]="title()"
+      (ngModelChange)="title.set($event)"
+      id="title"
+      name="title"
+      placeholder="Enter todo title"
+      [value]="modifiedTodo().title"
+      required
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+    />
+  </form>
+
+  <button
+    type="submit"
+    class="w-full bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-4 rounded-lg cursor-pointer"
+    (click)="modifyTodo()"
+  >
+    Modify Todo
+  </button>
+</dialog>

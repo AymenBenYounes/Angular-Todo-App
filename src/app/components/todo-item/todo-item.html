@@ -1,0 +1,31 @@
+<div class="mt-2 text-lg md:text-xl xl:text-2xl flex w-full md:w-[70%] mx-auto gap-3 justify-between items-center">
+  <div
+    appHighlightCompletedTodo
+    [isCompleted]="todo().completed"
+    class="flex gap-3 items-center font-semibold capitalize"
+  >
+    <input
+      type="checkbox"
+      id="todo-{{ todo().id }}"
+      [checked]="todo().completed"
+      (change)="this.todoToggled()"
+    />
+    <label for="todo-{{ todo().id }}">{{ todo().title }}</label>
+  </div>
+  <div class="flex gap-3">
+    <button (click)="onModify()" class="cursor-pointer">
+      <img
+        src="/edit.svg"
+        alt="edit icon"
+        class="w-[25px] xl:w-[30px] hover:opacity-70"
+      />
+    </button>
+    <button (click)="onDelete()" class="cursor-pointer">
+      <img
+        src="/delete.svg"
+        class="w-[25px] xl:w-[30px] hover:opacity-70"
+        alt="delete icon"
+      />
+    </button>
+  </div>
+</div>

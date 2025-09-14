@@ -1,0 +1,57 @@
+<h1 class="mt-10 text-center font-bold text-2xl">TODO LIST</h1>
+<div
+  class="w-[90%] mx-auto flex flex-col gap-4 justify-center items-center mt-5 md:flex-row md:w-[80%] xl:w-[60%]"
+>
+  <div class="flex gap-3 md:w-[65%] xl:w-[85%]">
+    <form class="w-[65%] mx-auto md:w-[70%] lg:w-[75%] xl:w-[85%]">
+      <input
+        class="w-full text-purple text-lg py-1 px-2 border-1 border-purple rounded-sm placeholder:text-purple placeholder:opacity-70 placeholder:text-lg"
+        type="text"
+        name="searchFilter"
+        [(ngModel)]="searchFilter"
+        placeholder="Search note..."
+      />
+    </form>
+    <select
+      [(ngModel)]="statusFilter"
+      name="statusFilter"
+      class="w-[35%] md:w-[30%] lg:w-[25%] xl:w-[15%] py-2.5 px-3 bg-purple text-white text-center rounded-sm cursor-pointer"
+    >
+      <option value="all" selected>ALL</option>
+      <option value="complete">Complete</option>
+      <option value="incomplete">Incomplete</option>
+    </select>
+  </div>
+  <div class="w-full flex gap-3 items-center justify-center md:w-[35%] xl:w-[25%]">
+    <button
+      class="w-[50%] md:w-full bg-purple text-white px-3 py-2.5 rounded-sm cursor-pointer hover:opacity-80"
+      (click)="openModel()"
+    >
+      Add Todo</button
+    ><button
+      class="w-[50%] md:w-full bg-purple text-white px-3 py-2.5 rounded-sm cursor-pointer hover:opacity-80"
+      (click)="clearAll()"
+    >
+      Clear All
+    </button>
+  </div>
+</div>
+<app-add-todo />
+<app-modify-todo [modifiedTodo]="todoToModify()" />
+@if (loading) {
+<p class="text-center mt-10">Loading ...</p>
+} @else if (!todoService.todos().length) {
+<p class="text-center mt-10">No todos yet. Add one!</p>
+} @else {
+<div class="mt-10 w-[80%] mx-auto xl:w-[50%] mx-auto">
+  @for (todo of todoService.todos() | todosFilter : searchFilter() | statusTodosFilter :
+  statusFilter(); track todo.id) {
+  <app-todo-item
+    [todo]="todo"
+    (todoChanged)="updateTodos($event)"
+    (todoDeleted)="deleteTodoItem($event)"
+    (todoModified)="modifyTodoItem($event)"
+  />
+  }
+</div>
+}
